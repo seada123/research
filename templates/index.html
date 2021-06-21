@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Credit Risk Assesment</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="./static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./static/css2/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+     <style>
+      .box {
+        width: 120px;
+        height: 30px;
+        border: 1px solid #999;
+        font-size: 18px;
+        color: #1c87c9;
+        background-color: #eee;
+        border-radius: 5px;
+        box-shadow: 4px 4px #ccc;
+      }
+    </style>
+</head>
+
+<body>
+  <nav class="#4db6ac teal lighten-2" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">WellCome To Hibret Bank Credit Risk Assesment Page </a>
+	<!--
+	<img src="hb.png" alt="" class="circle responsive-img">
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#"></a></li>
+		<li><a href="#"><img src="hb.png" alt="" class="circle responsive-img"></a></li>
+      </ul>
+-->
+  </nav>
+
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+     <h5 style="text-align: center; color: brown; font-weight: 600;">{{pred}}</h5>
+      <h4 class="header center black-text"> This Page Predict the Eligiblity of Customer Credit Requests </h4>
+      <div class="row center">
+        <h5 class="header col s12 light">Please fill the rquired information of credit applicants in the given fields!
+        <br>
+        </h5>
+      </div>
+
+      <div class="row">
+        <form action='/predict' method="post" class="col s12">
+            <div class="row">
+			<!-- 
+			<div class="input-field col s4">
+                    <label for="date" class="date"><b>Date</b></label>
+                    <br>
+                    <input placeholder="Current date" name="0" id="date" type="date" class="validate">
+                </div>
+				-->
+		<div class="row">	
+		 
+		     <label> Previous credit status	 </label> 
+			<div class="select1 green-text">
+			
+				 <div class="input-field col s4 ">
+                    
+					<select name="1" >  
+					<option selected disabled> Previous credit status  </option> 
+					<option value = "0"> Pass  </option>  
+					<option value = "1"> Special Mention </option>  
+					<option value = "2"> Substandard </option>  
+					<option value = "3"> Doubtful </option>
+					<option value = "4"> Loss </option>					
+					</select> 
+                </div>
+			</div>
+		</div>
+		
+		<div class="row">	
+		    <label> Frequency </label>
+			<div class="select1 green-text">
+				<div class="input-field col s4 ">
+                      
+					<select name="2"> 
+					<option selected disabled> Frequency of payment </option> 					
+					<option value = "1"> Monthly   
+					</option>  
+					<option value = "5"> Yearly  
+					</option>  
+					<option value = "3"> Quarterly  
+					</option>  				
+					</select> 
+                </div>
+			</div>
+		</div>
+		
+		<div class="row">	
+		   <label> Record status </label> 
+			<div class="select1 green-text">		
+				<div class="input-field col s4 ">
+                     
+					<select name="3">  
+					<option selected disabled> Record status </option> 					
+					<option value = "0"> Open   
+					</option>  
+					<option value = "1"> Close  
+					</option>  										
+					</select> 
+                </div>
+			</div>
+		</div>	
+				
+		<div class="row">	
+			<label> Purpose	 </label> 
+			<div class="select1 green-text">		
+				<div class="input-field col s4 ">
+                    
+					<select name="4">  
+					<option selected disabled> purpose of the lone </option> 					
+					<option value = "3"> EMERGENCY STAFF LOAN   
+					</option>  
+					<option value = "11"> DOMESTIC TRADE SERVICE – SHORT    
+					</option>  
+					<option value = "2"> DOMESTIC TRADE SERVICE – MEDIUM  
+					</option>  
+					<option value = "4"> ADVANCE ON IMPORT BILLS   
+					</option>
+					<option value = "16"> ADVANCE ON EXPORT BILL    
+					</option>	
+					<option value = "6"> IMPORT    
+					</option>  
+					<option value = "14"> EXPORT    
+					</option>  
+					<option value = "7"> BUILDING and CONSTRUCTION    
+					</option>  
+					<option value = "10"> MANUFACTURING        
+					</option>
+					<option value = "18"> PROJECT LOAN         
+					</option>
+					<option value = "13"> HOTEL and TOURISM SERVICE      
+					</option>
+					<option value = "15"> TRADE BILLS DISCOUNTING LIMIT
+					</option>  
+					<option value = "9"> TRANSPORT      
+					</option>  
+					<option value = "5"> STAFF PERSONAL LOAN     
+					</option>
+					
+					<option value = "12"> MERCHANDIZE LIMIT      
+					</option>  
+					<option value = "8"> PRE-SHIPMENT ADVANCE    
+					</option>  
+					<option value = "19"> HEALTH SERVICE  
+					</option>  
+					<option value = "17"> PERSONAL LOAN STAFF - C-Normal   
+					</option>
+					
+					</select> 
+				 
+                </div>
+				
+			</div>
+		</div>
+		
+		<div class="row">	
+		   <label> payment method </label>
+			<div class="select1 green-text">
+				<div class="input-field col s4 ">
+  
+					<select name="5">  
+					<option selected disabled> interest payment method  </option> 
+					<option value = "0"> Bearing  
+					</option>  
+					<option value = "1"> Discounted
+					</option>  										
+					</select> 
+                </div>
+			</div>
+		</div>
+			
+			<div class="row">	
+				<div class="input-field col s4 ">
+                  <label ><b>TENOR</b></label>
+                  <br>
+                  <input name = '6' placeholder="The duration of loan in number of days">
+
+                </div>
+			 </div>
+			 <div class="row">
+				 <div class="input-field col s4">
+                  <label ><b>Interest Rate</b></label>
+                  <br>
+                  <input name = '7' placeholder="Interest Rate">
+
+                </div>
+			</div>
+			<div class="row">
+				<div class="input-field col s4">
+                  <label ><b>Colleterial Amount	</b></label>
+                  <br>
+                  <input name = '8' placeholder="The price of collaterals in Birr">
+
+                </div>
+			</div>
+			<div class="row">			
+				<div class="input-field col s4">
+                  <label ><b>Requested Amount</b></label>
+                  <br>
+                  <input name = '9' placeholder="Requested Amount in Birr">
+
+                </div>
+				
+			</div>	<!--
+                <div class="input-field col s4">
+                    <label for="first_name"><b>Previous credit status	</b></label>
+                    <br>
+                    <input placeholder="Previous credit status" name="1" id="first_name" type="text" class="validate">
+                </div>
+				
+                <div class="input-field col s4">
+                    <label for="last_name"><b>Frequency </b></label>
+                    <br>
+                    <input id="last_name" name="2" placeholder="Frequency of payment"  type="text" class="validate">
+    
+                </div>
+    
+                <div class="input-field col s4">
+                    <label for="_name"><b>Record status</b></label>
+                    <br>
+                    <input id="_name" name="3" placeholder=" Record status" type="text" class="validate">
+    
+                </div>
+                <div class="input-field col s4">
+                    <label for="first_name"><b>purpose</b></label>
+                    <br>
+                    <input placeholder="purpose of the lone" name="4" id="first_name" type="text" class="validate">
+                </div>
+                <div class="input-field col s4">
+                    <label for="last_name"><b>payment method  </b></label>
+                    <br>
+                    <input id="last_name" name="5" placeholder="The interest payment method "  type="text" class="validate">
+                </div>
+				
+                <div class="input-field col s4">
+                  <label ><b>TENOR</b></label>
+                  <br>
+                  <input name = '6' placeholder="The duration of loan in number of days">
+
+                </div>
+				
+				 <div class="input-field col s4">
+                  <label ><b>Interest Rate</b></label>
+                  <br>
+                  <input name = '7' placeholder="Interest Rate">
+
+                </div>
+				
+				<div class="input-field col s4">
+                  <label ><b>Colleterial Amount	</b></label>
+                  <br>
+                  <input name = '8' placeholder="The price of collaterals in Birr">
+
+                </div>
+				
+				<div class="input-field col s4">
+                  <label ><b>Requested Amount</b></label>
+                  <br>
+                  <input name = '9' placeholder="Requested Amount in Birr">
+
+                </div>
+			-->
+    
+          </div>
+    
+          <div class="row center">
+    
+              <button type="submit" class="btn-large waves-effect #4db6ac teal lighten-2">Submit and predict Eligiblity
+			  <i class="material-icons right">send</i>
+			  </button>
+
+          </div>
+        </form>
+  </div>
+
+      <br>
+
+     
+    <br><br>
+  </div>
+  </div>
+
+  <footer class="page-footer card-panel teal lighten-2" style="position: fixed;left: 0;bottom: 0; width: 100%;">
+    <div class="footer-copyright ">
+      <div class=""  style="padding-bottom: 1rem; position: fixed; font-size: 1.2rem; margin-left: 5rem;">
+        <p>&copy; Seada Yimer</p>
+        <p>Seadayimer1821@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src=".js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+            $(document).ready(function () {
+                $("select").material_select();
+            });
+        </script>
+        <!-- Compiled and minified JavaScript -->
+        <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js">
+      </script>
+
+  </body>
+</html>
+
